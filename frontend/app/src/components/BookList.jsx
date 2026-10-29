@@ -12,27 +12,27 @@ function BookList() {
     }, []);
 
     const handleDelete = async (id) => {
-  const confirmDelete = window.confirm(
-    "Are you sure you want to delete this book?"
-  );
-
-  if (!confirmDelete) {
+  if (!window.confirm("Are you sure you want to delete this book?")) {
     return;
   }
+
+  // UI se turant hatao
+  const previousBooks = books;
+
+  setBooks((prevBooks) =>
+    prevBooks.filter((book) => book._id !== id)
+  );
 
   try {
     await axios.delete(
       `https://book-store-application-1-i39k.onrender.com/books/${id}`
     );
-
-    setBooks((prevBooks) =>
-      prevBooks.filter((book) => book._id !== id)
-    );
-
   } catch (error) {
-    console.error("Delete Error:", error);
+    console.error("Delete failed:", error);
+    alert("Server se delete nahi hua. Please dobara try karo.");
 
-    alert("Book delete nahi hui. Please try again.");
+    // API fail ho to purani list wapas lao
+    setBooks(previousBooks);
   }
 };
 
