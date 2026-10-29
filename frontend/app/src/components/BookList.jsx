@@ -20,7 +20,7 @@ function BookList() {
   return (
     <>
     <div>
-        <Link to="https://book-store-application-lu9b.onrender.com/add" className='="btn btn-primary mb-3'>Add New Book</Link>
+        <Link to="/add" className='="btn btn-primary mb-3'>Add New Book</Link>
         <Table Striped bordered hover>
             <thead>
                 <tr>
@@ -39,7 +39,7 @@ function BookList() {
                         <td>{book.description}</td>
                         <td>{book.publisherYear}</td>
                         <td>
-                            <Link to={`https://book-store-application-lu9b.onrender.com/edit/${book._id}`} className='btn btn-warning mr-2'>Edit</Link>
+                            <Link to={`/edit/${book._id}`} className='btn btn-warning mr-2'>Edit</Link>
                             <Button variant='danger' onClick={()=> handleDelete(book._id)}>Delete</Button>
                         </td>
                     </tr>
