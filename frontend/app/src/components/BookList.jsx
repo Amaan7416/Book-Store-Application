@@ -12,36 +12,29 @@ function BookList() {
     }, []);
 
     const handleDelete = async (id) => {
-        const confirmDelete = window.confirm(
-            "Are you sure you want to delete this book?"
-        );
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this book?"
+  );
 
-        if (!confirmDelete) return;
+  if (!confirmDelete) {
+    return;
+  }
 
-        try {
-            await axios.delete(
-                `https://book-store-application-lu9b.onrender.com/books/${id}`
-            );
+  try {
+    await axios.delete(
+      `https://book-store-application-1-i39k.onrender.com/books/${id}`
+    );
 
-            ```
-            setBooks((prevBooks) =>
-           prevBooks.filter((book) => book._id !== id)
-          );
-             ```
+    setBooks((prevBooks) =>
+      prevBooks.filter((book) => book._id !== id)
+    );
 
-        } catch (error) {
-            console.error(
-                "Delete failed:",
-                error.response?.status,
-                error.response?.data || error.message
-            );
+  } catch (error) {
+    console.error("Delete Error:", error);
 
-            ```
-            alert("Book delete nahi hui. Please try again.");
-              ```
-
-        }
-    };
+    alert("Book delete nahi hui. Please try again.");
+  }
+};
 
 
 
