@@ -7,12 +7,12 @@ import {Link} from 'react-router-dom'
 function BookList() {
     const [books,setBooks]= useState([])
     useEffect(()=>{
-        axios.get('http://localhost:5000/books').then(response=>setBooks(response.data)).catch
+        axios.get('https://book-store-application-lu9b.onrender.com/books').then(response=>setBooks(response.data)).catch
         (error=>console.log(error))
     },[]);
 
     const handleDelete=(id)=>{
-        axios.delete(`http://localhost:5000/books/${id}`)
+        axios.delete(`https://book-store-application-lu9b.onrender.com/books/${id}`)
         .then(()=>setBooks(books.filter(book=>book._id==id))).catch(error=>console.log(error));
     }
 

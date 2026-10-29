@@ -18,7 +18,7 @@ function BookForm() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:5000/books/${id}`)
+        .get(`https://book-store-application-lu9b.onrender.com/books/${id}`)
         .then((response) => {
           setBook(response.data);
         })
@@ -45,7 +45,7 @@ function BookForm() {
     if (id) {
       // Update book
       axios
-        .put(`http://localhost:5000/books/${id}`, book)
+        .put(`https://book-store-application-lu9b.onrender.com/books/${id}`, book)
         .then(() => {
           navigate('/');
         })
@@ -55,7 +55,7 @@ function BookForm() {
     } else {
       // Add new book
       axios
-        .post('http://localhost:5000/books', book)
+        .post('https://book-store-application-lu9b.onrender.com/books', book)
         .then(() => {
           navigate('/');
         })
